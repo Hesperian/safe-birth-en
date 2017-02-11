@@ -37,6 +37,9 @@
       load-url-timeout of 20000 won't allow the load of index.html -->
     <preference name="load-url-timeout" value="40000" />
 
+    <plugin name="cordova-plugin-statusbar" source="npm"/>
+
+
     <!-- iOS Properties -->
 
     <!-- Disable iOS webviewbounce -->
@@ -62,8 +65,7 @@
 
     <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="StatusBarBackgroundColor" value="#000000" />
-        <preference name="StatusBarStyle" value="lightcontent" />
-      <plugin name="com.phonegap.plugin.statusbar" />
+        <preference name="StatusBarStyle" value="default" />
 
     <!-- iOS App icons -->
     <icon src="icons/ios/icon.png" platform="ios" width="57" height="57" />
