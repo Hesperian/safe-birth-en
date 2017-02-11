@@ -37,12 +37,15 @@
       load-url-timeout of 20000 won't allow the load of index.html -->
     <preference name="load-url-timeout" value="40000" />
 
-    <plugin name="cordova-plugin-statusbar" source="npm"/>
+    <plugin name="cordova-plugin-statusbar" source="npm" spec="2.2.1"/>
 
 
     <!-- iOS Properties -->
 
+    <preference name="EnableViewportScale" value="true" />
+
     <!-- Disable iOS webviewbounce -->
+
     <preference name="webviewbounce" value="false" />
 
     <!-- iOS icons prerendered: system won't add it's own glossy effect -->
