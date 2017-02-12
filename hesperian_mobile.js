@@ -51,7 +51,7 @@ var HM = {
       }
 
       if(!gaInited) {
-        window.ga.startTrackerWithId('UA-91729174-2', 30);
+        window.ga.startTrackerWithId('UA-91729174-2', 3);
         gaInited = true;
       }
 
@@ -139,7 +139,9 @@ $("div:jqmData(role='page')").live("pageshow",function(event) {
     if(HM.gaAvailable()) {
       window.ga.trackView(thisPage);
     }
-  } catch(err) { }
+  } catch(err) {
+    alert(JSON.stringify(err, null,2));
+  }
 
 	if ($(this).attr("swipe") == "true") {
 		var el = $("div.sequence-bar-bottom",this);
