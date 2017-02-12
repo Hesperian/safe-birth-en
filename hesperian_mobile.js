@@ -61,6 +61,7 @@ var HM = {
 
 $(document).bind("mobileinit", function(){
 	$.mobile.defaultPageTransition = "none";
+  HM.gaAvailable(); // maybe we are ready?
 });
 
 $("div:jqmData(role='page')").live('pagebeforecreate',function(event){
@@ -120,6 +121,7 @@ document.addEventListener("deviceready", function() {
         $("body").addClass("hm-phonegap-" + platform);
         HM.platform = platform;
       }
+  HM.gaAvailable(); // maybe we are ready?
 
 }, false);
 
