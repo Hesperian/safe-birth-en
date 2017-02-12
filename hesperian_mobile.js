@@ -61,7 +61,6 @@ var HM = {
 
 $(document).bind("mobileinit", function(){
 	$.mobile.defaultPageTransition = "none";
-  HM.gaAvailable(); // maybe we are ready?
 });
 
 $("div:jqmData(role='page')").live('pagebeforecreate',function(event){
@@ -121,7 +120,6 @@ document.addEventListener("deviceready", function() {
         $("body").addClass("hm-phonegap-" + platform);
         HM.platform = platform;
       }
-  HM.gaAvailable(); // maybe we are ready?
 
 }, false);
 
@@ -137,6 +135,8 @@ $("div:jqmData(role='page')").live("pageshow",function(event) {
   if(HM.gaAvailable()) {
     window.ga.trackView($(this).attr("id"));
     alert("trackView " + $(this).attr("id"));
+  } else {
+    alert(alert("No trackView " + $(this).attr("id")));
   }
 
 	if ($(this).attr("swipe") == "true") {
