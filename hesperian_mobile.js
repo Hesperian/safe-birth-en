@@ -39,7 +39,24 @@ var HM = {
 
   // Cache of our current section (for the "up" button). KLOOGE: this will only work in the single page app -
   // on the load of a new html page, this will be reset, losing history.
-  currentSection: null
+  currentSection: null,
+  gaAvailable: (function() {
+    var gaInited = false;
+    return function() {
+      if(!window.ga) {
+        return false;
+      }
+
+      if(!gaInited) {
+        window.ga.startTrackerWithId('UA-91729174-2', 30);
+        alert("startTrackerWithId UA-91729174-2");
+
+        gaInited = true;
+      }
+
+      return window.ga;
+    };
+  })()
 };
 
 $(document).bind("mobileinit", function(){
@@ -104,16 +121,6 @@ document.addEventListener("deviceready", function() {
         HM.platform = platform;
       }
 
-      setTimeout(function() {
-        if(!window.ga) {
-          alert("where is window.ga?"); // Testing
-        }
-        if( window.ga) {
-          alert("startTrackerWithId UA-91729174-2");
-          window.ga.startTrackerWithId('UA-91729174-2', 30);
-        }
-      },0);
-
 }, false);
 
 $("div:jqmData(role='page')").live("pagebeforeshow",function(event, ui) {
@@ -125,7 +132,7 @@ $("div:jqmData(role='page')").live("pagebeforeshow",function(event, ui) {
 
 $("div:jqmData(role='page')").live("pageshow",function(event) {
 
-  if(window.ga) {
+  if(HM.gaAvailable()) {
     window.ga.trackView($(this).attr("id"));
     alert("trackView " + $(this).attr("id"));
   }
