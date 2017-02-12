@@ -44,13 +44,6 @@ var HM = {
 
 $(document).bind("mobileinit", function(){
 	$.mobile.defaultPageTransition = "none";
-  if(!window.ga) {
-    alert("where is window.ga?"); // Testing
-  }
-  if( window.ga) {
-    alert("startTrackerWithId UA-91729174-2");
-    window.ga.startTrackerWithId('UA-91729174-2', 30);
-  }
 });
 
 $("div:jqmData(role='page')").live('pagebeforecreate',function(event){
@@ -110,6 +103,16 @@ document.addEventListener("deviceready", function() {
         $("body").addClass("hm-phonegap-" + platform);
         HM.platform = platform;
       }
+
+      setTimeout(function() {
+        if(!window.ga) {
+          alert("where is window.ga?"); // Testing
+        }
+        if( window.ga) {
+          alert("startTrackerWithId UA-91729174-2");
+          window.ga.startTrackerWithId('UA-91729174-2', 30);
+        }
+      },0);
 
 }, false);
 
