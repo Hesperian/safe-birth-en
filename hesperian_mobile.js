@@ -127,14 +127,14 @@ document.addEventListener("deviceready", function() {
 
 }, false);
 
-$("div:jqmData(role='page')").live("pagebeforeshow",function(event, ui) {
+$(document).on("pagebeforeshow","div:jqmData(role='page')", function(event, ui) {
 	var page = $(this);
   HM.currentSection =  HM.getContentSectionForPage(page, HM.currentSection);
   $('.upbutton', page).hide();
   $('[upid='+HM.currentSection+']', page).show();
 });
 
-$("div:jqmData(role='page')").live("pageshow",function(event) {
+$(document).on("pageshow","div:jqmData(role='page')",function(event) {
   var thisPage = $(this).attr("id");
 
   try {
@@ -180,7 +180,7 @@ function swipeToClick(el) {
 }
 
 //swiping would need to be selectively added to pages where we wanted it
-$("div:jqmData(role='page')").live("pagecreate",function(event) {
+$(document).live("pagecreate","div:jqmData(role='page')",function(event) {
 	var page = $(this);
 	//pass page to bind swipe after filtering it for pages containing a div with class sequence bar, this identifies that swiping is to be enabled.
 	if (page.attr("swipe") == "true")
@@ -337,11 +337,11 @@ function showKeepReadingText(id) {
 	}
 }
 
-$("div:jqmData(role='page')").live("pageshow",function(event) {
+$(document).on("pageshow","div:jqmData(role='page')",function(event) {
 	showKeepReadingText("#hm-keepreading");
 });
 
-$("div:jqmData(role='page')").live("pagehide",function(event) {
+$(document).live("pagehide","div:jqmData(role='page')",function(event) {
 	$("#hm-keepreading").hide();
 });
 
