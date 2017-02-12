@@ -40,6 +40,9 @@ var HM = {
   // Cache of our current section (for the "up" button). KLOOGE: this will only work in the single page app -
   // on the load of a new html page, this will be reset, losing history.
   currentSection: null,
+
+  // test to see if we can call window.ga methods. Will do a JIT initialization.
+  // both mobileinit or deviceready are too soon to init, evidently.
   gaAvailable: (function() {
     var gaInited = false;
     return function() {
@@ -49,8 +52,6 @@ var HM = {
 
       if(!gaInited) {
         window.ga.startTrackerWithId('UA-91729174-2', 30);
-        alert("startTrackerWithId UA-91729174-2");
-
         gaInited = true;
       }
 
@@ -136,13 +137,6 @@ $("div:jqmData(role='page')").live("pageshow",function(event) {
 
   if(HM.gaAvailable()) {
     window.ga.trackView(thisPage);
-    alert("trackView " + thisPage);
-  } else {
-    setTimeout(function() {
-      window.ga.trackView(thisPage);
-      alert("delayed trackView " + thisPage);
-    },0);
-    alert(alert("No trackView " + $(this).attr("id")));
   }
 
 	if ($(this).attr("swipe") == "true") {
