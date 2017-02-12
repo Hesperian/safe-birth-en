@@ -121,6 +121,10 @@ document.addEventListener("deviceready", function() {
         HM.platform = platform;
       }
 
+      if(!HM.gaAvailable()) {
+        alert("no ga in deviceready");
+      }
+
 }, false);
 
 $("div:jqmData(role='page')").live("pagebeforeshow",function(event, ui) {
