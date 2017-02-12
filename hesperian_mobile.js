@@ -121,9 +121,6 @@ document.addEventListener("deviceready", function() {
         HM.platform = platform;
       }
 
-      if(!HM.gaAvailable()) {
-        alert("no ga in deviceready");
-      }
 
 }, false);
 
@@ -135,11 +132,16 @@ $("div:jqmData(role='page')").live("pagebeforeshow",function(event, ui) {
 });
 
 $("div:jqmData(role='page')").live("pageshow",function(event) {
+  var thisPage = $(this).attr("id");
 
   if(HM.gaAvailable()) {
-    window.ga.trackView($(this).attr("id"));
-    alert("trackView " + $(this).attr("id"));
+    window.ga.trackView(thisPage);
+    alert("trackView " + thisPage);
   } else {
+    setTimeout(function() {
+      window.ga.trackView(thisPage);
+      alert("delayed trackView " + thisPage);
+    },0);
     alert(alert("No trackView " + $(this).attr("id")));
   }
 
