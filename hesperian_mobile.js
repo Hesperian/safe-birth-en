@@ -341,7 +341,7 @@ $(document).on("pageshow","div:jqmData(role='page')",function(event) {
 	showKeepReadingText("#hm-keepreading");
 });
 
-$(document).live("pagehide","div:jqmData(role='page')",function(event) {
+$(document).on("pagehide","div:jqmData(role='page')",function(event) {
 	$("#hm-keepreading").hide();
 });
 
