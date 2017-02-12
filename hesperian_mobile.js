@@ -107,6 +107,7 @@ document.addEventListener("deviceready", function() {
         alert("where is window.ga?"); // Testing
       }
       if( window.ga) {
+        alert("startTrackerWithId UA-91729174-2");
         window.ga.startTrackerWithId('UA-91729174-2', 30);
       }
 
@@ -123,6 +124,7 @@ $("div:jqmData(role='page')").live("pageshow",function(event) {
 
   if(window.ga) {
     window.ga.trackView($(this).attr("id"));
+    alert("trackView " + $(this).attr("id"));
   }
 
 	if ($(this).attr("swipe") == "true") {
